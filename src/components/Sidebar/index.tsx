@@ -10,7 +10,6 @@ import CustomTooltip from "./CustomTooltip";
 import { FiChevronsLeft, FiSun } from "react-icons/fi";
 import { GoMoon } from "react-icons/go";
 import { useTheme } from "next-themes";
-import { div } from "framer-motion/client";
 
 type SidebarProps = {
   sidebarOpen: boolean;
