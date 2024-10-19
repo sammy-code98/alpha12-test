@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes increaseSideBarWidth {
+  from {
+    width: 5.75rem;
+  }
+
+  to {
+    width: 18rem;
+  }
+}
+
+@keyframes snapSideBarWidth {
+  from {
+    width: 18rem;
+  }
+
+  to {
+    width: 5.75rem;
+  }
+}
+
+.animate-sidebar-width-inc {
+  animation: increaseSideBarWidth 0.5s ease-in-out forwards;
+}
+
+.animate-sidebar-width-snap {
+  animation: snapSideBarWidth 0.5s ease-in-out forwards;
+}
+
+@keyframes hideText {
+  from {
+    opacity: 1;
+    width: 100%;
+  }
+
+  to {
+    opacity: 0;
+    width: 0;
+  }
+}
+
+@keyframes showText {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+
+  to {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.animate-sidebar-text-hide {
+  animation: hideText 0.5s ease-in forwards;
+}
+
+.animate-sidebar-text-show {
+  animation: showText 0.5s ease-in forwards;
+}
