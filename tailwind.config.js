@@ -21,9 +21,9 @@ export default {
         danger: "#F43F5E",
         blue: "#3B82F6",
         blueLight: "#DBEAFE",
-        darkest:"#484554",
-        bgDark:"#383544",
-        grayLight:"#6b7280"
+        darkest: "#484554",
+        bgDark: "#383544",
+        grayLight: "#6b7280",
       },
     },
   },

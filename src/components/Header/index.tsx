@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SidebarRoutes } from "../../types/routes";
-import logo from "../../assets/Logo.svg";
 import { Button, Image } from "@nextui-org/react";
 import { FcMenu } from "react-icons/fc";
+import logo from "../../assets/Logo.svg";
 
 type HeaderT = {
   sidebarOpen: string | boolean | undefined;
@@ -27,11 +27,7 @@ export default function Header(props: HeaderT): JSX.Element {
         </div>
 
         <div>
-          <Button
-            isIconOnly
-            className="z-10"
-            onClick={handleSidebarOpen}
-          >
+          <Button isIconOnly className="z-10" onClick={handleSidebarOpen}>
             <FcMenu className="text-gray dark:text-white text-xl" />
           </Button>
         </div>
