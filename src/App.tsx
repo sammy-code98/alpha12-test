@@ -1,14 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { SidebarRoutes } from "./types/routes";
 
-
 import DashboardLayout from "./layouts/Dashboard.layout";
 
-
-
 import Home from "./pages/Home";
-
-
+import Events from "./pages/Events";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +13,10 @@ export const router = createBrowserRouter([
       {
         path: SidebarRoutes.home,
         element: <Home />,
+      },
+      {
+        path: SidebarRoutes.events,
+        element: <Events />,
       },
     ],
   },
