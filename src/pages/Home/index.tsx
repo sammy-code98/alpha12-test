@@ -1,7 +1,9 @@
+import { lazy, Suspense } from "react";
 import SumCard from "../../components/Cards/SumCard";
 import { sumDetails } from "./data";
-import Chart from "../../components/Chart/index";
 import Carousel from "../../components/Carousel";
+
+const Chart = lazy(() => import("../../components/Chart"));
 
 export default function Home(): JSX.Element {
   return (
@@ -33,7 +35,9 @@ export default function Home(): JSX.Element {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div>
-            <Chart />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Chart />
+            </Suspense>
           </div>
           <div>
             <Carousel />

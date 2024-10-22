@@ -11,7 +11,7 @@ import slide1 from "../../assets/Slide1.png";
 
 export default function Carousel(): JSX.Element {
   return (
-    <div className="h-full p-1 border border-blueLight rounded-md shadow-sm">
+    <div className="h-[500px] md:h-full p-1 border border-blueLight rounded-md shadow-sm">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
