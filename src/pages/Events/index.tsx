@@ -1,5 +1,5 @@
 export default function Events() {
   return (
-    <div>Events</div>
+    <div className="text-center h-screen flex items-center justify-center flex-col">Events</div>
   )
 }

@@ -1,7 +1,9 @@
 import { lazy, Suspense } from "react";
+import { Input } from "@nextui-org/react";
 import SumCard from "../../components/Cards/SumCard";
-import { sumDetails } from "./data";
 import Carousel from "../../components/Carousel";
+import { sumDetails } from "./data";
+import { IoIosSearch } from "react-icons/io";
 
 const Chart = lazy(() => import("../../components/Chart"));
 
@@ -49,6 +51,26 @@ export default function Home(): JSX.Element {
         <h3 className="text-xl text-black font-medium dark:text-white">
           Events History
         </h3>
+
+        <div className="py-2">
+          <div className="flex flex-col md:flex-row justify-between">
+            <div>
+              <Input
+                variant="faded"
+                startContent={<IoIosSearch />}
+                placeholder="Search..."
+                type="text"
+              />
+              <Input
+                variant="faded"
+                startContent={<IoIosSearch />}
+                placeholder="Search..."
+                type="date"
+              />
+            </div>
+            <div>jeje</div>
+          </div>
+        </div>
       </div>
     </div>
   );
