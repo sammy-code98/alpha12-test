@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
         <h3 className="text-xl text-black font-medium dark:text-white">
           Event Registrations per month{" "}
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div>
             <Chart />
           </div>
