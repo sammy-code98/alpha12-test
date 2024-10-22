@@ -4,6 +4,7 @@ import SumCard from "../../components/Cards/SumCard";
 import Carousel from "../../components/Carousel";
 import { sumDetails } from "./data";
 import { IoIosSearch } from "react-icons/io";
+import Table from "../../components/Table";
 
 const Chart = lazy(() => import("../../components/Chart"));
 
@@ -70,6 +71,10 @@ export default function Home(): JSX.Element {
             </div>
             <div>jeje</div>
           </div>
+        </div>
+
+        <div className="py-2">
+          <Table />
         </div>
       </div>
     </div>
