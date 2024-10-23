@@ -11,10 +11,18 @@ import {
 import { Chip, Spinner, useDisclosure } from "@nextui-org/react";
 import { GoDotFill } from "react-icons/go";
 import TablePagination from "../TablePagination";
-import { tableData } from "./data";
 import EventModal from "./EventModal";
 
-export default function EventTable(): JSX.Element {
+interface EventTableProps {
+  events: Array<{
+    eventName: string;
+    date: string;
+    speaker: string;
+    status: string;
+  }>;
+}
+
+export default function EventTable({ events }: EventTableProps): JSX.Element {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -27,8 +35,8 @@ export default function EventTable(): JSX.Element {
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
 
-  const currentRows = tableData.slice(indexOfFirstRow, indexOfLastRow);
-  const totalPages = Math.ceil(tableData.length / rowsPerPage);
+  const currentRows = events.slice(indexOfFirstRow, indexOfLastRow);
+  const totalPages = Math.ceil(events.length / rowsPerPage);
 
   const handlePageChange = (page: SetStateAction<number>) => {
     setCurrentPage(page);
