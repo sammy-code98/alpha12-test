@@ -1,50 +1,70 @@
-# React + TypeScript + Vite
+# AlphaTwelve Front-End Developer (React & Figma to Code Conversion Specialist) - Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is built as part of a technical interview test for a frontend devloper position. It demonstrates the use of modern frontend technologies (ReactJs,Typescript,Tailwind Css ) to create an interactive, responsive, and scalable web application. The project adheres to best practices in code organization, component-based architecture, and performance optimization.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo
+[DemoUrl](https://uzor-samuel-alpha12-test.vercel.app/)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
+- Responsive dashboard design for various screen sizes
+- Carousel/slider component
+- Type check for props
+- React router implemantation
+- Lazy load components for Performance Optimization
+- Dark theme mood
+- Responsive Table
+- Filter and Search implemantation 
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Technologies Used
+- **React.js:** For building the user interface.
+- **TypeScript:** Ensuring type safety and reducing runtime errors.
+- **Tailwind CSS:** Utility-first CSS framework for styling.
+- **NextUI:** Beautiful, fast and modern React UI library.
+- **Vite:** For a fast and optimized development experience 
+
+
+## Run Locally
+
+Clone Project Repo 👍
+
+```bash
+   git clone https://github.com/sammy-code98/alpha12-test.git
+   ```
+
+Navigate to Project Directory
+```bash
+cd  project-name
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Install dependencies 
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+  yarn install
+  ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+  Start the Development Server
+
+  ```bash
+  yarn dev
+  ```
+
+  The application will run locally on `http://localhost:5173/`
+
+
+
+## Improvements and Next Steps
+- **Add Testing:** Improve coverage for edge cases and asynchronous flows
+- **Accessibility:** Ensure that all UI components are accessible with keyboard navigation and screen readers.
+- **SEO:** Implement better SEO practices (e.g., meta tags, alt attributes for images).
+
+
+## Author
+
+Uzor Samuel
+
+Frontend Engineer
+
+[LinkedIn](https://www.linkedin.com/in/samuel-uzor98/) || [Github](https://github.com/sammy-code98)
