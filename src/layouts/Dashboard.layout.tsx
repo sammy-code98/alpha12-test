@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 import Header from "../components/Header";
+import BottomNav from "../components/BottomNav";
 
 export default function DashboardLayout(): JSX.Element {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
@@ -22,6 +23,7 @@ export default function DashboardLayout(): JSX.Element {
           </main>
         </div>
       </div>
+      <BottomNav/>
     </div>
   );
 }
