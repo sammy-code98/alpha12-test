@@ -8,15 +8,21 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/table";
-import { Chip, Spinner } from "@nextui-org/react";
+import { Chip, Spinner, useDisclosure } from "@nextui-org/react";
 import { GoDotFill } from "react-icons/go";
 import TablePagination from "../TablePagination";
 import { tableData } from "./data";
+import EventModal from "./EventModal";
 
 export default function EventTable(): JSX.Element {
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const [selectedName, setSelectedName] = useState<string>("");
+  const [selectedDate, setSelectedDate] = useState<string>("");
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -44,71 +50,102 @@ export default function EventTable(): JSX.Element {
     fetchData();
   }, []);
 
-  return (
-    <div className="w-full px-2 py-3 overflow-x-auto">
-      <Table
-        radius="none"
-        removeWrapper={true}
-        aria-label="event-table"
-        bottomContent={
-          <div className="flex w-full justify-center">
-            <TablePagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-              onRowsPerPageChange={handleRowsPerPageChange}
-              rowsPerPage={rowsPerPage}
-              loading={loading}
-            />
-          </div>
-        }
-      >
-        <TableHeader className="bg-gray2">
-          <TableColumn className="text-gray dark:text-white">
-            Event Name
-          </TableColumn>
-          <TableColumn className="text-gray dark:text-white">Date</TableColumn>
-          <TableColumn className="text-gray dark:text-white">
-            Speaker
-          </TableColumn>
-          <TableColumn className="text-gray dark:text-white">
-            Status
-          </TableColumn>
-        </TableHeader>
+  const openModal = (name: string, date: string) => {
+    setSelectedName(name);
+    setSelectedDate(date);
+    onOpen();
+  };
 
-        <TableBody
-          emptyContent={
-            loading ? (
-              <div className="flex justify-center items-center">
-                <Spinner size="sm" />
-              </div>
-            ) : (
-              <p className="tex-xl text-black dark:text-white">
-                No Events Found
-              </p>
-            )
+  return (
+    <>
+      <div className="w-full px-2 py-3 overflow-x-auto">
+        <Table
+          radius="none"
+          removeWrapper={true}
+          aria-label="event-table"
+          bottomContent={
+            <div className="flex w-full justify-center">
+              <TablePagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                onRowsPerPageChange={handleRowsPerPageChange}
+                rowsPerPage={rowsPerPage}
+                loading={loading}
+              />
+            </div>
           }
         >
-          {currentRows.map((events, index) => (
-            <TableRow key={index}>
-              <TableCell className="text-gray dark:text-white">
-                {events.eventName}
-              </TableCell>
-              <TableCell className="text-gray dark:text-white">
-                {events.date}
-              </TableCell>
-              <TableCell className="text-gray dark:text-white">
-                {events.speaker}
-              </TableCell>
-              <TableCell className="text-gray dark:text-white">
-                <Chip size="md" className={`text-xs font-medium ${events.status === "Completed" ? "text-green bg-greenLight" : "text-blue bg-blueLight"}`} startContent={<GoDotFill/>}>
-                  <span> {events.status}</span>
-                </Chip>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+          <TableHeader className="bg-gray2">
+            <TableColumn className="text-gray dark:text-white">
+              Event Name
+            </TableColumn>
+            <TableColumn className="text-gray dark:text-white">
+              Date
+            </TableColumn>
+            <TableColumn className="text-gray dark:text-white">
+              Speaker
+            </TableColumn>
+            <TableColumn className="text-gray dark:text-white">
+              Status
+            </TableColumn>
+          </TableHeader>
+
+          <TableBody
+            emptyContent={
+              loading ? (
+                <div className="flex justify-center items-center">
+                  <Spinner size="sm" />
+                </div>
+              ) : (
+                <p className="tex-xl text-black dark:text-white">
+                  No Events Found
+                </p>
+              )
+            }
+          >
+            {currentRows.map((events, index) => (
+              <TableRow key={index}>
+                <TableCell className="text-gray dark:text-white">
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => openModal(events.eventName, events.date)}
+                  >
+                    {events.eventName}
+                  </span>
+                </TableCell>
+                <TableCell className="text-gray dark:text-white">
+                  {events.date}
+                </TableCell>
+                <TableCell className="text-gray dark:text-white">
+                  {events.speaker}
+                </TableCell>
+                <TableCell className="text-gray dark:text-white">
+                  <Chip
+                    size="md"
+                    className={`text-xs font-medium ${
+                      events.status === "Completed"
+                        ? "text-green bg-greenLight"
+                        : "text-blue bg-blueLight"
+                    }`}
+                    startContent={<GoDotFill />}
+                  >
+                    <span> {events.status}</span>
+                  </Chip>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+
+      <EventModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onOpenChange={onOpenChange}
+        name={selectedName}
+        date={selectedDate}
+      />
+    </>
   );
 }
