@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Avatar, Button, Image, ScrollShadow, Switch, User } from "@nextui-org/react";
+import {
+  Avatar,
+  Button,
+  Image,
+  ScrollShadow,
+  Switch,
+  User,
+} from "@nextui-org/react";
 import logo from "../../assets/Logo.svg";
 import { sidebarLinks } from "./sidebarLinks";
 import SidebarLink from "./SidebarLink";

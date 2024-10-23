@@ -16,10 +16,10 @@ export default function SidebarLink(
   const location = useLocation();
 
   const exactLocation =
-    props.pathname.split("/").length > 2
-      ? location.pathname === props.pathname ||
-        location.pathname.includes(props.pathname)
-      : props.pathname === "/" && location.pathname.split("/").length === 2;
+    props.pathname === location.pathname ||
+    (props.pathname !== "/" &&
+      location.pathname.startsWith(props.pathname + "/")) ||
+    (props.pathname === "/" && location.pathname === "/");
 
   const closeSidebar = () => {
     if (props.sidebarOpen) {

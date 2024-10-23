@@ -6,6 +6,7 @@ export const SidebarRoutes = {
   notification: "/notification",
   messages: "/messages",
   settings: "/settings",
+  profile: "/profile"
 };
 
 export type SidebarRoutes = (typeof SidebarRoutes)[keyof typeof SidebarRoutes];
